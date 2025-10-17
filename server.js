@@ -44,7 +44,7 @@ app.get('/links', (req, res) => {
 });
 
 app.get('/links/:id', (req, res) => {
-  const link = extLinks.find(l => l.id === req.params.id);
+  const link = extLinks.find(link => link.id === req.params.id);
   res.render('links/show.ejs', { link });
 });
 
