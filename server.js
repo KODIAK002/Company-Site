@@ -3,46 +3,126 @@ const app = express();
 
 app.listen(3000);
 
-const krustyKrabs = {
-  name: 'The Green Byte Bistro',
-//   isOpen: true,
-  address: '892 Kelp Lane, Bikini Bottom, 20250',
+const companyInfo = {
+  name: 'GameTrio',
+  address: '308 Negra Arroyo Lane, Albuquerque, New Mexico, 3828',
   phone: '555-321-9876',
   staff: [
     {
       saffId: 1,
       name: 'Euegne Krabs',
       timeAtCompany: 5,
-      category: 'mains',
-      details: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
+      jobTitle: 'mains',
+      divison: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
     },
     {
       saffId: 2,
       name: 'Binary Berry Cheesecake',
       timeAtCompany: 10.11,
-      category: 'desserts',
-      details: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
+      jobTitle: 'desserts',
+      divison: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
     },
     {
       saffId: 3,
       name: 'Recursive Rigatoni',
       timeAtCompany: 17.00,
-      category: 'mains',
-      details: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
+      jobTitle: 'mains',
+      divison: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
     },
     {
       saffId: 4,
       name: 'Pumpkin Pi Squared',
       timeAtCompany: 3.14,
-      category: 'desserts',
-      details: 'A delightful pumpkin dessert, squared and spiced to perfection.'
+      jobTitle: 'desserts',
+      divison: 'A delightful pumpkin dessert, squared and spiced to perfection.'
     },
     {
       saffId: 5,
       name: 'Fibonacci String Bean Fries',
       timeAtCompany: 11.23,
-      category: 'sides',
-      details: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
+      jobTitle: 'sides',
+      divison: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
+    }
+  ],
+
+  oldPortfolio: [
+    {
+      projectId: 1,
+      name: 'Odin',
+      timeWorkedOn: 5,
+      amountOfDevs: 'mains',
+      Genre: $,
+      description: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
+    },
+    {
+      projectId: 2,
+      name: 'Binary Berry Cheesecake',
+      timeWorkedOn: 10.11,
+      amountOfDevs: 'desserts',
+      Genre: $,
+      description: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
+    },
+    {
+      projectId: 3,
+      name: 'Recursive Rigatoni',
+      timeWorkedOn: 17.00,
+      amountOfDevs: 'mains',
+      Genre: $,
+      description: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
+    },
+    {
+      projectId: 4,
+      name: 'Pumpkin Pi Squared',
+      timeWorkedOn: 3.14,
+      amountOfDevs: 'desserts',
+      Genre: $,
+      description: 'A delightful pumpkin dessert, squared and spiced to perfection.'
+    },
+    {
+      projectId: 5,
+      name: 'Fibonacci String Bean Fries',
+      timeWorkedOn: 11.23,
+      amountOfDevs: 'sides',
+      Genre: $,
+      description: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
+    }
+  ],
+
+  externalLinks: [
+    {
+      saffId: 1,
+      name: 'Euegne Krabs',
+      timeAtCompany: 5,
+      jobTitle: 'mains',
+      divison: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
+    },
+    {
+      saffId: 2,
+      name: 'Binary Berry Cheesecake',
+      timeAtCompany: 10.11,
+      jobTitle: 'desserts',
+      divison: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
+    },
+    {
+      saffId: 3,
+      name: 'Recursive Rigatoni',
+      timeAtCompany: 17.00,
+      jobTitle: 'mains',
+      divison: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
+    },
+    {
+      saffId: 4,
+      name: 'Pumpkin Pi Squared',
+      timeAtCompany: 3.14,
+      jobTitle: 'desserts',
+      divison: 'A delightful pumpkin dessert, squared and spiced to perfection.'
+    },
+    {
+      saffId: 5,
+      name: 'Fibonacci String Bean Fries',
+      timeAtCompany: 11.23,
+      jobTitle: 'sides',
+      divison: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
     }
   ]
 }
@@ -60,13 +140,13 @@ const krustyKrabs = {
 
 app.get('/', (req, res) => {
     res.render('home.ejs', {
-        krustyKrabs: krustyKrabs
+        companyInfo: companyInfo
     });
 });
 
 app.get('/menu/item/:id', (req, res) => {
-    const item = krustyKrabs.menu.filter(item => item.id === parseInt(req.params.id));
-    res.render('item.ejs', {
+    const item = krustyKrabs.staff.filter(item => item.id === parseInt(req.params.id));
+    res.render('pastwork.ejs', {
         item: item[0]
     });
 });
