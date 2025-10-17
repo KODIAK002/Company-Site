@@ -266,11 +266,18 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/pastwork', (req, res) => {
+    res.render('pastwork.ejs', {
+
+    })
+})
+
+
 app.get('/menu/item/:id', (req, res) => {
-  const item = krustyKrabs.menu.filter(item => item.id === parseInt(req.params.id));
-  res.render('item.ejs', {
-    item: item[0]
-  });
+    const item = krustyKrabs.staff.filter(item => item.id === parseInt(req.params.id));
+    res.render('pastwork.ejs', {
+        item: item[0]
+    });
 });
 
 app.get('/menu/:category', (req, res) => {
