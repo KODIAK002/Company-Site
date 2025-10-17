@@ -45,9 +45,10 @@ app.get('/links', (req, res) => {
 
 app.get('/links/:id', (req, res) => {
   const link = extLinks.find(l => l.id === req.params.id);
-  if (!link) return res.status(404).send('Link not found');
   res.render('links/show.ejs', { link });
 });
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+
+app.listen(3000, () => {
+  console.log(`listen on port 3000`)
+})
