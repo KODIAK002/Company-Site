@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>External Links</title></head>
+<body>
+  <h1>External Links</h1>
+  <ul>
+    <% extLinks.forEach(link => { %>
+      <li><a href="/links/<%= link.id %>"><%= link.label %></a> — <%= link.note %></li>
+    <% }) %>
+  </ul>
+</body>
+</html>

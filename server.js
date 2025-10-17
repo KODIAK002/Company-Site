@@ -1,75 +1,27 @@
 const express = require('express');
 const app = express();
 
-app.listen(3000);
+app.set('view engine', 'ejs');
 
-const krustyKrabs = {
-  name: 'The Green Byte Bistro',
-//   isOpen: true,
-  address: '892 Kelp Lane, Bikini Bottom, 20250',
-  phone: '555-321-9876',
-  staff: [
-    {
-      saffId: 1,
-      name: 'Euegne Krabs',
-      timeAtCompany: 5,
-      category: 'mains',
-      details: 'A vegetarian burger made with a quinoa and mushroom patty, it will take you to another realm.'
-    },
-    {
-      saffId: 2,
-      name: 'Binary Berry Cheesecake',
-      timeAtCompany: 10.11,
-      category: 'desserts',
-      details: 'A creamy cheesecake bursting with flavor. A mix of berries in every byte.'
-    },
-    {
-      saffId: 3,
-      name: 'Recursive Rigatoni',
-      timeAtCompany: 17.00,
-      category: 'mains',
-      details: 'A classic rigatoni pasta dish, layered with rich tomato sauce and herbs. You\'ll keep coming back for more.'
-    },
-    {
-      saffId: 4,
-      name: 'Pumpkin Pi Squared',
-      timeAtCompany: 3.14,
-      category: 'desserts',
-      details: 'A delightful pumpkin dessert, squared and spiced to perfection.'
-    },
-    {
-      saffId: 5,
-      name: 'Fibonacci String Bean Fries',
-      timeAtCompany: 11.23,
-      category: 'sides',
-      details: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
-    }
-  ]
-}
+const extLinks = [
+  { id: 0, label: 'Reddit r/gamedev', href: 'https://www.reddit.com/r/gamedev/', note: 'Game Deloping Reddit' },
+  { id: 1, label: 'gamedeveloper.com', href: 'https://www.gamedeveloper.com/', note: 'GameNews' },
+  { id: 2, label: 'UE course', href: 'https://www.udemy.com/course/unrealcourse/', note: 'Unreal Engine Course' },
+  { id: 3, label: 'Unreal Engine', href: 'https://www.unrealengine.com/en-US', note: 'Unreal Engine Course' },
+  { id: 4, label: 'E3', href: 'https://e3expo.com/E3.html', note: 'E3 Expo' },
+];
 
+app.get('/', (req, res) => res.redirect('/links'));
 
-app.get('/', (req, res) => {
-  res.render('home.ejs', {
-    name: 'The Green Byte Bistro',
-    isOpen: true,
-    address: '742 Evergreen Rd, Mapleview, OS 45502',
-    phone: '555-321-9876',
-  })
+app.get('/links', (req, res) => {
+  res.render('links/index.ejs', { extLinks });
 });
 
-app.get('/menu/item/:id', (req, res) => {
-    const item = RESTAURANT.menu.filter(item => item.id === parseInt(req.params.id));
-    res.render('item.ejs', {
-        item: item[0]
-    });
+app.get('/links/:id', (req, res) => {
+  const link = extLinks.find(l => l.id === Number(req.params.id));
+  if (!link) return res.status(404).send('Link not found');
+  res.render('links/show.ejs', { link });
 });
 
-app.get('/menu/:category', (req, res) => {
-  const category = req.params.category;
-  const menuItemFiltered = RESTAURANT.menu.filter(item => item.category === category);
-  const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-  res.render('category.ejs', {
-    menuItems: menuItemFiltered,
-    categoryName: categoryName
-  })
-});
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
