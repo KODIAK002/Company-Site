@@ -4,12 +4,38 @@ const app = express();
 app.set('view engine', 'ejs');
 
 const extLinks = [
-  { id: 0, label: 'Reddit r/gamedev', href: 'https://www.reddit.com/r/gamedev/', note: 'Game Deloping Reddit' },
-  { id: 1, label: 'gamedeveloper.com', href: 'https://www.gamedeveloper.com/', note: 'GameNews' },
-  { id: 2, label: 'UE course', href: 'https://www.udemy.com/course/unrealcourse/', note: 'Unreal Engine Course' },
-  { id: 3, label: 'Unreal Engine', href: 'https://www.unrealengine.com/en-US', note: 'Unreal Engine Course' },
-  { id: 4, label: 'E3', href: 'https://e3expo.com/E3.html', note: 'E3 Expo' },
+  { id: `ext-reddit`, 
+    label: 'Reddit r/gamedev', 
+    href: 'https://www.reddit.com/r/gamedev/', 
+    note: 'Game Deloping Reddit' 
+  },
+  
+  { id: `ext-gamedev`, 
+    label: 'gamedeveloper.com', 
+    href: 'https://www.gamedeveloper.com/', 
+    note: 'GameNews' 
+  },
+
+  { id: `ext-course`, 
+    label: 'UE course', 
+    href: 'https://www.udemy.com/course/unrealcourse/', 
+    note: 'Unreal Engine Course' 
+  },
+
+  { id: `ext-ue`, 
+    label: 'Unreal Engine', 
+    href: 'https://www.unrealengine.com/en-US', 
+    note: 'Unreal Engine Course' 
+  },
+
+  { id: `ext-e3`, 
+    label: 'E3', 
+    href: 'https://e3expo.com/E3.html', 
+    note: 'E3 Expo' 
+  },
 ];
+
+
 
 app.get('/', (req, res) => res.redirect('/links'));
 
@@ -18,7 +44,7 @@ app.get('/links', (req, res) => {
 });
 
 app.get('/links/:id', (req, res) => {
-  const link = extLinks.find(l => l.id === Number(req.params.id));
+  const link = extLinks.find(l => l.id === req.params.id);
   if (!link) return res.status(404).send('Link not found');
   res.render('links/show.ejs', { link });
 });
