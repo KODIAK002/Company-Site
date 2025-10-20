@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>
-        <%= krustyKrabs.name %>
+        <%= companyInfo.name %>.com
     </title>
 </head>
 
 <body>
-
-    <%- include('./partials/nav') %>
+<button><%- include('./partials/nav') %></button>
     <h1>Home Page</h1>
 
-    <%= krustyKrabs.name %><br>
-    <%= krustyKrabs.address %><br>
-    <%= krustyKrabs.phone %>
+    <%= companyInfo.name %><br>
+    <%= companyInfo.address %><br>
+    <%= companyInfo.phone %>
 
 </body>
 

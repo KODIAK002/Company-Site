@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8"><title>External Links</title>
+</head>
+<body>
+<button><%- include('./partials/nav') %></button>
+  <h1>External Links</h1>
+  <ul>
+    <% extlinks.forEach(link => { %>
+      <li><a href="/links <%= link.id %>"><%= link.label %></a> — <%= link.note %></li>
+    <% }) %>
+  </ul>
+</body>
+</html>

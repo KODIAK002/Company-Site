@@ -1,0 +1,9 @@
+body {
+    background-color: darkgray;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    margin: 0 12px;
+}

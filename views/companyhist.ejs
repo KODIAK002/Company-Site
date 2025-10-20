@@ -1,0 +1,6 @@
+<button><%- include('./partials/nav') %></button>
+<link rel="stylesheet" href="/css/style.css">
+<h2>Company History</h2>
+    <% history.forEach(function(p) { %>
+        <p><%= p %></p>
+    <% }) %>

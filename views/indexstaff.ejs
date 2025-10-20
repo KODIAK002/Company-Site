@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Staff</title>
+  </head>
+  <body>
+    <h1>Staff</h1>
+
+    <ul>
+      <% employee.forEach(employee => { %>
+        <li>
+          <a href="/staff/search/<%= employee.id %>"><%= employee.name %></a> — <%= employee.position %>
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

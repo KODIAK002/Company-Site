@@ -12,9 +12,9 @@
 
 <body>
     <button><%- include('./partials/nav') %></button>
-    <h1>Below are a list of games we've produced over the years!</h1>
+    <h1>Below are                 games that fall under <%= genreGroup[0].Genre %></h1>
     <hr>
-    <% gameList.forEach(game =>  { %>
+    <% genreGroup.forEach(game =>  { %>
         <div>
              <h3>Game Name: <%= game.name %></h3>
                 <p>Genre: <%= game.Genre %></p>

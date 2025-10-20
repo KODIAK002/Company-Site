@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title><%= companyInfo.name %>.com</title>
+</head>
+<body>
+    <button><%- include('./partials/nav') %></button>
+    <div>
+        <h3>Game Name: <%= oldwork.name %></h3>
+        <hr>
+        <p>Genre: <%= oldwork.Genre %></p>
+        <p>This game took <%= oldwork.timeWorkedOn%> years</p>
+        <p><%= oldwork.amountOfDevs %> developers collaberated to create this game</p>
+        <p>Here is a little description of the game: <%= oldwork.description%> </p>
+    </div>
+</body>
+</html>
