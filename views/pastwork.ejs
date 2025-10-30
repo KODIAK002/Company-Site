@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>
+        <%= companyInfo.name %>.com
+    </title>
+</head>
+
+<body>
+    <button><%- include('./partials/nav') %></button>
+    <h1>Below are a list of games we've produced over the years!</h1>
+    <hr>
+    <% gameList.forEach(game =>  { %>
+        <div>
+             <h3>Game Name: <%= game.name %></h3>
+                <p>Genre: <%= game.Genre %></p>
+                <p>This game took <%= game.timeWorkedOn%> years</p>
+                <p><%= game.amountOfDevs %> developers collaberated to create this game</p>
+                <p>Here is a little description of the game: <%= game.description%> </p>
+        </div>
+        <hr>
+    <% }) %>
+</body>
+
+</html>

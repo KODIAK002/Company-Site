@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title><%= name %> | Contact Us</title>
+</head>
+<body>
+    <button><%- include('./partials/nav') %></button>
+    <h1>Contact Us</h1>
+    <form action="/contact-us-submit" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <small>required</small>
+            <input type="text" id="name" required />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <small>required</small>
+            <input type="email" id="email" required />
+        </div>
+        <div>
+            <label for="category">I'm contacting about:</label>
+            <select id="category">
+                <option value="work">A job opportunity</option>
+                <option value="question">A question</option>
+                <option value="misc">Miscellaneous</option>
+            </select>
+        </div>
+        <div>
+            <label for="telephone-input">Telephone input:</label>
+            <input type="tel" id="telephone-input" />
+        </div>
+        <div>
+            <label for="hear-about-choice">How did you hear about us?</label>
+            <input list="choice-list" id="hear-about-choice" name="hear-about-choice" required />
+            <datalist id="choice-list">
+                <option value="Twitter"></option>
+                <option value="Facebook"></option>
+                <option value="Instagram"></option>
+                <option value="YouTube"></option>
+                <option value="TV"></option>
+                <option value="Other"></option>
+            </datalist>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <small>required</small>
+            <textarea id="message" required maxLength="100"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
